@@ -1,6 +1,6 @@
 const express = require('express');
 const { createUserController, getAll, userValidation, getPerID } = require('./controllers/user.controller');
-const { createCategoryController } = require('./controllers/categories.controller');
+const { createCategoryController, getCategoriesController } = require('./controllers/categories.controller');
 const authenticateToken = require('./middlewares/auth.middleware');
 
 // ...
@@ -24,6 +24,8 @@ app.post('/user', userValidation);
 app.get('/user/:id', authenticateToken, getPerID);
 
 app.post('/categories', authenticateToken, createCategoryController);
+
+app.get('/categories', authenticateToken, getCategoriesController);
 
 // ...
 // É importante exportar a constante `app`,
