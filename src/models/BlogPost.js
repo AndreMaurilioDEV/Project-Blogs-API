@@ -21,11 +21,13 @@ const BlogPost = (sequelize, DataTypes) => {
     BlogPostTable.associate = (models) => {
         BlogPostTable.belongsTo(models.User, 
         { foreignKey: 'user_id', as: 'users'})
+
+        BlogPostTable.hasMany(models.PostCategory, 
+            { foreignKey: 'post_id', as: 'post_categories'})
     };
 
     return BlogPostTable;
 };
-
 
 
 module.exports = BlogPost;
